@@ -3,7 +3,6 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
 import CategoriesPage from '../Features/Categories/CategoriesPage';
 import ProductsPage from '../Features/Products/ProductsPage';
 
@@ -16,17 +15,11 @@ import { useAppDispatch } from '../redux/store';
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
-  // const loadCategories = async (): Promise<void> => {
-  //   const res = await axios.get('/api/categories');
-  //   dispatch({ type: 'load/categories', payload: res.data });
-  // };
-
-  const loadProducts = async (): Promise<void> => {
-    const res = await axios.get('/api/products');
-    dispatch({ type: 'load/products', payload: res.data });
-  };
-
   useEffect(() => {
+    axios
+      .get('/api/products')
+      .then(({ data }) => dispatch({ type: 'load/products', payload: data }))
+      .catch(console.log);
     axios
       .get('/api/categories')
       .then(({ data }) => dispatch({ type: 'load/categories', payload: data }))
@@ -36,8 +29,7 @@ function App(): JSX.Element {
       .get('/api/auth/check')
       .then(({ data }) => dispatch({ type: 'autch/userCheck', payload: data }))
       .catch(console.log);
-    loadProducts();
-  }, []);
+  }, [dispatch]);
 
   // очень важно не забытЬ!
 

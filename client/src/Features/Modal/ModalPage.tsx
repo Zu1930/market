@@ -2,15 +2,14 @@ import React from 'react';
 import './modal.css';
 
 type ModalWindowProps = {
-  isOpen: boolean;
-  onClose: () => void;
+  // isOpen: boolean;
   children: React.ReactNode;
 };
 
-function ModalWindow({ isOpen, onClose, children }: ModalWindowProps): JSX.Element {
-  if (!isOpen) {
-    return null;
-  }
+function ModalWindow({ children }: ModalWindowProps): JSX.Element {
+  // if (!isOpen) {
+  //   return false;
+  // }
   return (
     <div className="modal-overlay">
       <div className="modal">

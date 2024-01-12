@@ -13,10 +13,10 @@ ENV REFRESH_TOKEN_SECRET=secretR
 COPY . .
 
 # Установка зависимостей и сборка клиентской части
-RUN cd client && npm install && npm run build
+RUN cd client && npm ci && npm run build
 
 # Установка зависимостей для серверной части
-RUN cd server && npm install
+RUN cd server && npm ci
 
 # Определяем порт, который будет прослушивать сервер
 EXPOSE 4000

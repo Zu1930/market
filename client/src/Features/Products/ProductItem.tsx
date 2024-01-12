@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import axios from 'axios';
 import type { Product, ProductId } from './types/type';
 import ModalWindow from '../Modal/ModalPage';
@@ -14,7 +14,7 @@ type ProductItemProps = {
 };
 
 function ProductItem({ product }: ProductItemProps): JSX.Element {
-  const [isModalOpen, setModalOpen] = useState(false);
+  // const [isModalOpen, setModalOpen] = useState(false);
   const dispatch = useAppDispatch();
 
   const deleteProduct = async (id: ProductId): Promise<void> => {
@@ -41,14 +41,12 @@ function ProductItem({ product }: ProductItemProps): JSX.Element {
     }
   };
   const openModal = (): void => {
-    console.log('без колбэка');
-
-    setModalOpen(true);
+    // setModalOpen(true);
   };
   const openModalCallback = useCallback(openModal, []);
 
   const closeModal = (): void => {
-    setModalOpen(false);
+    // setModalOpen(false);
   };
 
   return (
@@ -68,7 +66,7 @@ function ProductItem({ product }: ProductItemProps): JSX.Element {
         <button type="button" className="card-button" onClick={openModalCallback}>
           Удалить
         </button>
-        <ModalWindow isOpen={isModalOpen} onClose={closeModal}>
+        <ModalWindow>
           {/* <button type="button" onClick={() => deleteProduct(product.id)}>
           удалить
         </button> */}
