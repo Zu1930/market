@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const path = require('path');
 
 const auth = require('./api/auth.router');
 const category = require('./api/category.router');
