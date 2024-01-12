@@ -19,7 +19,7 @@ RUN cd client && npm ci && npm run build
 RUN cd server && npm ci
 
 # Определяем порт, который будет прослушивать сервер
-EXPOSE 4000
+EXPOSE  8080
 
 # Запускаем сервер при запуске контейнера
 CMD [ "node", "server/app.js" ]
